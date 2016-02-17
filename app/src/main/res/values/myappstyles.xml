@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="appheader">
+        <item name="android:gravity">center</item>
+        </style>
+
+    <style name="appFonts">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#009688</item>
+    </style>
+
+</resources>
