@@ -19,66 +19,87 @@ public class MainActivity extends AppCompatActivity {
 
     String LOG_TAG = "MainActivity";
 
+    EditText bill_Amount;
+    EditText tip_Percent;
+    TextView tip_Amount;
+    TextView total_Amount;
+    EditText no_Of_Ppl;
+    TextView each_Person_Pay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        bill_Amount = (EditText) findViewById(R.id.bill_amount);
+        tip_Percent = (EditText) findViewById(R.id.tip_percent);
+        tip_Amount = (TextView) findViewById(R.id.tip_amount);
+        total_Amount = (TextView) findViewById(R.id.total_amount);
+        no_Of_Ppl = (EditText) findViewById(R.id.no_of_ppl);
+        each_Person_Pay = (TextView) findViewById(R.id.each_person_pay);
+
+        String default_value1 = "0.0";
+        String default_value2 = "0";
+
+        bill_Amount.setText(default_value1);
+        tip_Percent.setText(default_value2);
+        tip_Amount.setText(default_value1);
+        total_Amount.setText(default_value1);
+        no_Of_Ppl.setText(default_value2);
+        each_Person_Pay.setText(default_value1);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
+    /**
+     * Calculate total tip
+     * @param view
+     */
     public void calculateTip(View view)
     {
+        double billAmount = 0.0;
+        double tipPercent = 0.0;
+        double tipAmount = 0.0;
+        double totalAmount = 0.0;
+        double noOfPpl = 0.0;
+        double eachPersonpay = 0.0;
+
         int duration = Toast.LENGTH_LONG;
         CharSequence message = "Please enter valid amount";
         Context context = getApplicationContext();
 
-        EditText billAmount = (EditText) findViewById(R.id.bill_amount);
-        EditText tipPercent = (EditText) findViewById(R.id.tip_percent);
-        TextView tipAmount = (TextView) findViewById(R.id.tip_amount);
-        TextView totalAmount = (TextView) findViewById(R.id.total_amount);
-        EditText noOfPpl = (EditText) findViewById(R.id.no_of_ppl);
-        TextView eachPersonPay = (TextView) findViewById(R.id.each_person_pay);
-
         Button cal = (Button) findViewById(R.id.calculate);
 
-        if(billAmount.getText().equals(null))
+        if(bill_Amount.getText().equals(""))
         {
             Toast toast = Toast.makeText(context, message, duration);
             Log.e(LOG_TAG, "Toast shown on screen");
-        } else if (billAmount.getText() != null) {
-            totalAmount.setText(billAmount.getText());
+        } else if (bill_Amount.getText().length() > 0) {
+            billAmount = Integer.parseInt(bill_Amount.getText().toString());
         }
+
+        if(tip_Percent.getText().equals(""))
+        {
+            Toast toast = Toast.makeText(context, message, duration);
+            Log.e(LOG_TAG, "Toast shown on screen");
+        } else if (tip_Percent.getText().length() > 0) {
+            tipPercent = Integer.parseInt(tip_Percent.getText().toString());
+        }
+
+        if(no_Of_Ppl.getText().equals(""))
+        {
+            Toast toast = Toast.makeText(context, message, duration);
+            Log.e(LOG_TAG, "Toast shown on screen");
+        } else if (no_Of_Ppl.getText().length() > 0) {
+            noOfPpl = Integer.parseInt(no_Of_Ppl.getText().toString());
+        }
+
+        tipAmount = (billAmount * tipPercent) / 100;
+        tip_Amount.setText(Double.toString(tipAmount));
+
+        totalAmount = billAmount + tipAmount;
+        total_Amount.setText(Double.toString(totalAmount));
+
+        eachPersonpay = totalAmount / noOfPpl;
+        each_Person_Pay.setText(Double.toString(eachPersonpay));
+
     }
 }

@@ -2,7 +2,7 @@
 <resources>
     <style name="appheader">
         <item name="android:gravity">center</item>
-        </style>
+    </style>
 
     <style name="appFonts">
         <item name="android:textSize">16dp</item>
