@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
+    android:background="@color/plain_white"
     tools:showIn="@layout/activity_main">
 
+    <!-- TIP Calculator Header -->
     <TextView
         style="@style/appheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/appheader"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="42dp"
         android:layout_marginBottom="25dp"
         android:layout_gravity="center"
         android:textSize="30dp"
@@ -21,129 +22,132 @@
         android:textStyle="bold"
         />
 
-   <TableLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:stretchColumns="2"
-       >
+    <!-- User Inputs -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
 
-       <TableRow android:layout_width="wrap_content"
-           android:layout_height="wrap_content">
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/bill_amount"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/layout_background">
 
-           <EditText
-               android:id="@+id/bill_amount"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               android:inputType="number"
-               />
-       </TableRow>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="2"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
+        <!-- Bill Amount -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/bill_amount"
+                />
 
-       <TableRow android:layout_width="wrap_content"
-           android:layout_height="wrap_content">
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/tip_percent"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               android:layout_marginBottom="25dp"
-               />
-           <EditText
-               android:id="@+id/tip_percent"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               android:inputType="number"
-               />
-       </TableRow>
+            <EditText
+                style="@style/InputStyle"
+                android:id="@+id/bill_amount"
+                android:inputType="numberDecimal"
+                />
+        </TableRow>
 
-       <TableRow>
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/tip_amount"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
-           <TextView
-               android:id="@+id/tip_amount"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="20dp"
-               />
-       </TableRow>
+        <!-- Tip Percentage -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/tip_percent"
+                />
 
-       <TableRow>
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/no_of_ppl"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
-           <EditText
-               android:id="@+id/no_of_ppl"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               android:inputType="number"
-               />
-       </TableRow>
+            <EditText
+                style="@style/InputStyle"
+                android:id="@+id/tip_percent"
+                android:inputType="numberDecimal"
+                />
+        </TableRow>
 
-       <TableRow>
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/total_amount"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
+        <!-- No. of people -->
+        <TableRow>
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/no_of_ppl"
+                />
 
-           <TextView
-               android:id="@+id/total_amount"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
-       </TableRow>
+            <EditText
+                style="@style/InputStyle"
+                android:id="@+id/no_of_ppl"
+                android:inputType="number"
+                />
+        </TableRow>
 
-       <TableRow android:layout_height="wrap_content">
-           <TextView
-               style="@style/appFonts"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/each_person_pay"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
-           <TextView
-               android:id="@+id/each_person_pay"
-               android:layout_width="150dp"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="25dp"
-               android:layout_marginTop="10dp"
-               />
-       </TableRow>
-   </TableLayout>
+        </TableLayout>
+
+    </LinearLayout>
+
+    <!-- Calculation Output -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/layout_background">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="2"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
+
+        <!-- Tip amount -->
+        <TableRow
+            android:layout_marginBottom="10dp">
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/tip_amount"
+                />
+
+            <TextView
+                style="@style/OutputStyle"
+                android:id="@+id/tip_amount"
+                />
+        </TableRow>
+
+        <!-- Total bill amount-->
+        <TableRow
+            android:layout_marginBottom="10dp">
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/total_amount"
+                />
+
+            <TextView
+                style="@style/OutputStyle"
+                android:id="@+id/total_amount"
+                />
+        </TableRow>
+
+        <!-- Each person pays -->
+        <TableRow android:layout_height="wrap_content">
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/each_person_pay"
+                />
+
+            <TextView
+                style="@style/OutputStyle"
+                android:id="@+id/each_person_pay"
+                />
+        </TableRow>
+    </TableLayout>
+
+    </LinearLayout>
 
    <Button
        android:id="@+id/calculate"
@@ -154,7 +158,8 @@
        android:layout_marginLeft="70dp"
        android:layout_marginRight="70dp"
        android:layout_gravity="center"
-       android:background="#009688"
+       android:background="@drawable/layout_background"
+       android:textColor="@color/plain_white"
        android:onClick="calculateTip"
        />
 

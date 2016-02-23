@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, message, duration);
             Log.e(LOG_TAG, "Toast shown on screen");
         } else if (bill_Amount.getText().length() > 0) {
-            billAmount = Integer.parseInt(bill_Amount.getText().toString());
+            billAmount = Double.parseDouble(bill_Amount.getText().toString());
         }
 
         if(tip_Percent.getText().equals(""))
@@ -98,8 +98,12 @@ public class MainActivity extends AppCompatActivity {
         totalAmount = billAmount + tipAmount;
         total_Amount.setText(Double.toString(totalAmount));
 
-        eachPersonpay = totalAmount / noOfPpl;
-        each_Person_Pay.setText(Double.toString(eachPersonpay));
+        if(noOfPpl > 1) {
+            eachPersonpay = totalAmount / noOfPpl;
+            each_Person_Pay.setText(Double.toString(eachPersonpay));
+        }else {
+            each_Person_Pay.setText(Double.toString(totalAmount));
+        }
 
     }
 }

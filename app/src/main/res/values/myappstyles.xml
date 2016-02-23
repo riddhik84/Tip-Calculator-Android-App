@@ -4,10 +4,45 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="appFonts">
-        <item name="android:textSize">16dp</item>
+    <style name="LabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">14dp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">#009688</item>
+        <item name="android:textColor">@color/plain_white</item>
+
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+
+    </style>
+
+    <style name="InputStyle">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/plain_white</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
+    </style>
+
+    <style name="OutputStyle">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/plain_white</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
     </style>
 
 </resources>
