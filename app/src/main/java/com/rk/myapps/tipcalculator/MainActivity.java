@@ -15,95 +15,96 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
-    String LOG_TAG = "MainActivity";
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    EditText bill_Amount;
-    EditText tip_Percent;
-    TextView tip_Amount;
-    TextView total_Amount;
-    EditText no_Of_Ppl;
-    TextView each_Person_Pay;
+    EditText bill_amount_edittext;
+    EditText tip_percent_edittext;
+    EditText no_of_ppl_edittext;
+    TextView tip_amount_textview;
+    TextView total_amount_textview;
+    TextView each_person_pay_textview;
+    Button calculate_tip;
+
+    final String DEFAULT_VALUE1 = "0.0";
+    final String DEFAULT_VALUE2 = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bill_Amount = (EditText) findViewById(R.id.bill_amount);
-        tip_Percent = (EditText) findViewById(R.id.tip_percent);
-        tip_Amount = (TextView) findViewById(R.id.tip_amount);
-        total_Amount = (TextView) findViewById(R.id.total_amount);
-        no_Of_Ppl = (EditText) findViewById(R.id.no_of_ppl);
-        each_Person_Pay = (TextView) findViewById(R.id.each_person_pay);
+        bill_amount_edittext = (EditText) findViewById(R.id.bill_amount);
+        tip_percent_edittext = (EditText) findViewById(R.id.tip_percent);
+        tip_amount_textview = (TextView) findViewById(R.id.tip_amount);
+        total_amount_textview = (TextView) findViewById(R.id.total_amount);
+        no_of_ppl_edittext = (EditText) findViewById(R.id.no_of_ppl);
+        each_person_pay_textview = (TextView) findViewById(R.id.each_person_pay);
 
-        String default_value1 = "0.0";
-        String default_value2 = "0";
+        calculate_tip = (Button) findViewById(R.id.calculate);
 
-        bill_Amount.setText(default_value1);
-        tip_Percent.setText(default_value2);
-        tip_Amount.setText(default_value1);
-        total_Amount.setText(default_value1);
-        no_Of_Ppl.setText(default_value2);
-        each_Person_Pay.setText(default_value1);
+        bill_amount_edittext.setText(DEFAULT_VALUE2);
+        tip_percent_edittext.setText(DEFAULT_VALUE2);
+        tip_amount_textview.setText(DEFAULT_VALUE2);
+        total_amount_textview.setText(DEFAULT_VALUE2);
+        no_of_ppl_edittext.setText(DEFAULT_VALUE2);
+        each_person_pay_textview.setText(DEFAULT_VALUE2);
     }
 
     /**
      * Calculate total tip
+     *
      * @param view
      */
-    public void calculateTip(View view)
-    {
+    public void calculateTip(View view) {
         double billAmount = 0.0;
         double tipPercent = 0.0;
         double tipAmount = 0.0;
         double totalAmount = 0.0;
         double noOfPpl = 0.0;
-        double eachPersonpay = 0.0;
+        double eachPersonPay = 0.0;
 
-        int duration = Toast.LENGTH_LONG;
-        CharSequence message = "Please enter valid amount";
-        Context context = getApplicationContext();
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
 
-        Button cal = (Button) findViewById(R.id.calculate);
-
-        if(bill_Amount.getText().equals(""))
-        {
-            Toast toast = Toast.makeText(context, message, duration);
-            Log.e(LOG_TAG, "Toast shown on screen");
-        } else if (bill_Amount.getText().length() > 0) {
-            billAmount = Double.parseDouble(bill_Amount.getText().toString());
+        if (bill_amount_edittext.getText().equals("")) {
+            showToast();
+//            Log.e(LOG_TAG, "Toast shown on screen");
+        } else if (bill_amount_edittext.getText().length() > 0) {
+            billAmount = Double.parseDouble(bill_amount_edittext.getText().toString());
         }
 
-        if(tip_Percent.getText().equals(""))
-        {
-            Toast toast = Toast.makeText(context, message, duration);
-            Log.e(LOG_TAG, "Toast shown on screen");
-        } else if (tip_Percent.getText().length() > 0) {
-            tipPercent = Integer.parseInt(tip_Percent.getText().toString());
+        if (tip_percent_edittext.getText().equals("")) {
+            showToast();
+//            Log.e(LOG_TAG, "Toast shown on screen");
+        } else if (tip_percent_edittext.getText().length() > 0) {
+            tipPercent = Double.parseDouble(tip_percent_edittext.getText().toString());
         }
 
-        if(no_Of_Ppl.getText().equals(""))
-        {
-            Toast toast = Toast.makeText(context, message, duration);
-            Log.e(LOG_TAG, "Toast shown on screen");
-        } else if (no_Of_Ppl.getText().length() > 0) {
-            noOfPpl = Integer.parseInt(no_Of_Ppl.getText().toString());
+        if (no_of_ppl_edittext.getText().equals("")) {
+            showToast();
+//            Log.e(LOG_TAG, "Toast shown on screen");
+        } else if (no_of_ppl_edittext.getText().length() > 0) {
+            noOfPpl = Integer.parseInt(no_of_ppl_edittext.getText().toString());
         }
 
         tipAmount = (billAmount * tipPercent) / 100;
-        tip_Amount.setText(Double.toString(tipAmount));
+        tip_amount_textview.setText(numberFormat.format(tipAmount));
 
         totalAmount = billAmount + tipAmount;
-        total_Amount.setText(Double.toString(totalAmount));
+        total_amount_textview.setText(numberFormat.format(totalAmount));
 
-        if(noOfPpl > 1) {
-            eachPersonpay = totalAmount / noOfPpl;
-            each_Person_Pay.setText(Double.toString(eachPersonpay));
-        }else {
-            each_Person_Pay.setText(Double.toString(totalAmount));
+        if (noOfPpl > 1) {
+            eachPersonPay = totalAmount / noOfPpl;
+            each_person_pay_textview.setText(Double.toString(eachPersonPay));
+        } else {
+            each_person_pay_textview.setText(numberFormat.format(totalAmount));
         }
+    }
 
+    public void showToast() {
+        Toast.makeText(getApplicationContext(), getString(R.string.toast_message), Toast.LENGTH_SHORT).show();
     }
 }
