@@ -9,15 +9,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 
 public class SplashScreen extends Activity {
 
-    private static final int SPLASH_TIME_OUT = 2000;
+    private static final int SPLASH_SCREEN_TIME_OUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -26,7 +30,7 @@ public class SplashScreen extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, SPLASH_SCREEN_TIME_OUT);
     }
 }
 

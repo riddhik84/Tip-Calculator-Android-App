@@ -1,169 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
-    android:background="@color/plain_white"
+    android:paddingBottom="16dp"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
     tools:showIn="@layout/activity_main">
 
-    <!-- TIP Calculator Header -->
-    <TextView
-        style="@style/appheader"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appheader"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="25dp"
-        android:layout_gravity="center"
-        android:textSize="30dp"
-        android:textColor="#009688"
-        android:textStyle="bold"
-        />
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
-    <!-- User Inputs -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/layout_background">
-
-        <TableLayout
+        <!-- TIP Calculator Header -->
+        <TextView
+            style="@style/appheader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="2"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="38dp"
+            android:text="@string/appheader"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-        <!-- Bill Amount -->
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/bill_amount"
-                />
+        <!-- User Inputs -->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
 
-            <EditText
-                style="@style/InputStyle"
-                android:id="@+id/bill_amount"
-                android:inputType="numberDecimal"
-                />
-        </TableRow>
-
-        <!-- Tip Percentage -->
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/tip_percent"
-                />
-
-            <EditText
-                style="@style/InputStyle"
-                android:id="@+id/tip_percent"
-                android:inputType="numberDecimal"
-                />
-        </TableRow>
-
-        <!-- No. of people -->
-        <TableRow>
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/no_of_ppl"
-                />
-
-            <EditText
-                style="@style/InputStyle"
-                android:id="@+id/no_of_ppl"
-                android:inputType="number"
-                />
-        </TableRow>
-
-        </TableLayout>
-
-    </LinearLayout>
-
-    <!-- Calculation Output -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:background="@drawable/layout_background">
-
-        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="2"
+            android:background="@drawable/layout_background"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:stretchColumns="2">
+
+                <!-- Bill Amount -->
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/bill_amount" />
+
+                    <EditText
+                        android:id="@+id/bill_amount"
+                        style="@style/InputStyle"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+                </TableRow>
+
+                <!-- Tip Percentage -->
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/tip_percent" />
+
+                    <EditText
+                        android:id="@+id/tip_percent"
+                        style="@style/InputStyle"
+                        android:hint="0"
+                        android:inputType="numberDecimal" />
+                </TableRow>
+
+                <!-- No. of people -->
+                <TableRow>
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/no_of_ppl" />
+
+                    <EditText
+                        android:id="@+id/no_of_ppl"
+                        style="@style/InputStyle"
+                        android:hint="1"
+                        android:inputType="number" />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <!-- Calculation Output -->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp">
+            android:background="@drawable/layout_background"
+            android:orientation="vertical">
 
-        <!-- Tip amount -->
-        <TableRow
-            android:layout_marginBottom="10dp">
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/tip_amount"
-                />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:stretchColumns="2">
 
-            <TextView
-                style="@style/OutputStyle"
-                android:id="@+id/tip_amount"
-                />
-        </TableRow>
+                <!-- Tip amount -->
+                <TableRow android:layout_marginBottom="10dp">
 
-        <!-- Total bill amount-->
-        <TableRow
-            android:layout_marginBottom="10dp">
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/total_amount"
-                />
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/tip_amount" />
 
-            <TextView
-                style="@style/OutputStyle"
-                android:id="@+id/total_amount"
-                />
-        </TableRow>
+                    <TextView
+                        android:id="@+id/tip_amount"
+                        style="@style/OutputStyle" />
+                </TableRow>
 
-        <!-- Each person pays -->
-        <TableRow android:layout_height="wrap_content">
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/each_person_pay"
-                />
+                <!-- Total bill amount-->
+                <TableRow android:layout_marginBottom="10dp">
 
-            <TextView
-                style="@style/OutputStyle"
-                android:id="@+id/each_person_pay"
-                />
-        </TableRow>
-    </TableLayout>
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/total_amount" />
+
+                    <TextView
+                        android:id="@+id/total_amount"
+                        style="@style/OutputStyle" />
+                </TableRow>
+
+                <!-- Each person pays -->
+                <TableRow android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="@string/each_person_pay" />
+
+                    <TextView
+                        android:id="@+id/each_person_pay"
+                        style="@style/OutputStyle" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/layout_background"
+            android:onClick="calculateTip"
+            android:text="@string/calculate"
+            android:textColor="@android:color/white" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/sendmail_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|end" />
 
     </LinearLayout>
 
-   <Button
-       android:id="@+id/calculate"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="@string/calculate"
-       android:layout_marginTop="35dp"
-       android:layout_marginLeft="70dp"
-       android:layout_marginRight="70dp"
-       android:layout_gravity="center"
-       android:background="@drawable/layout_background"
-       android:textColor="@color/plain_white"
-       android:onClick="calculateTip"
-       />
-
-</LinearLayout>
+</ScrollView>
