@@ -3,9 +3,7 @@ package com.rk.myapps.tipcalculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
     Button calculate_tip;
     FloatingActionButton fab;
 
-    ShareActionProvider mShareActionProvider;
-
     final String DEFAULT_VALUE1 = "0";
+
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.setCollapsible(true);
-        toolbar.setTitle(getString(R.string.home_header));
-        //toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
-        toolbar.setLogo(R.mipmap.calc_main);
+        toolbar.setTitle(getString(R.string.app_name));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+        toolbar.setLogo(R.drawable.square_icon);
         setSupportActionBar(toolbar);
 
         bill_amount_edittext = (EditText) findViewById(R.id.bill_amount);
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         total_amount_textview = (TextView) findViewById(R.id.total_amount);
         no_of_ppl_edittext = (EditText) findViewById(R.id.no_of_ppl);
         each_person_pay_textview = (TextView) findViewById(R.id.each_person_pay);
-        fab = (FloatingActionButton) findViewById(R.id.sendmail_fab);
+        //fab = (FloatingActionButton) findViewById(R.id.sendmail_fab);
 
         calculate_tip = (Button) findViewById(R.id.calculate);
 
@@ -62,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         each_person_pay_textview.setText(DEFAULT_VALUE1);
 
         //Phase2: Save calculation functionality
-        fab.setImageResource(R.mipmap.sendmail);
-        fab.setVisibility(View.INVISIBLE);
+//        fab.setImageResource(R.mipmap.sendmail);
+        //fab.setVisibility(View.INVISIBLE);
 
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -73,8 +72,11 @@ public class MainActivity extends AppCompatActivity {
 //                        + "\nTotal amount: " + total_amount_textview.getText()
 //                        + "\nEach Person Pays: " + each_person_pay_textview.getText();
 //
+//                Log.d(LOG_TAG, "mailContent: " + mailContent);
+//
 //                Intent sendmail = new Intent(Intent.ACTION_SEND);
-//                sendmail.setType("message/rfc822");
+//                //sendmail.setType("message/rfc822");
+//                sendmail.setType("text/plain");
 //                sendmail.putExtra(Intent.EXTRA_TEXT, mailContent);
 //                try {
 //                    startActivity(Intent.createChooser(sendmail, getString(R.string.sendmail_header)));
@@ -87,42 +89,67 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(LOG_TAG, "onCreateOptionsMenu");
+
         // Inflate the menu; this adds items to the action bar/toolbar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        getMenuInflater().inflate(R.menu.menu_share, menu);
+        //getMenuInflater().inflate(R.menu.menu_share, menu);
 
         //Provide default share action provider
-        MenuItem shareMenuItem = menu.findItem(R.id.action_share);
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareMenuItem);
-        if (mShareActionProvider != null) {
-            //Log.d(LOG_TAG, "ShareActionProvider not null");
-            mShareActionProvider.setShareIntent(createShareDataIntent());
-        } else {
-            Log.i(LOG_TAG, "ShareActionProvider null");
-        }
+//        MenuItem shareMenuItem = menu.findItem(R.id.action_share);
+        //mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareMenuItem);
+//        mShareActionProvider = (ShareActionProvider) shareMenuItem.getActionProvider();
+//
+//        if (mShareActionProvider != null) {
+//            mShareActionProvider.setShareIntent(createShareDataIntent());
+//        }
+
         return true;
     }
 
-    private Intent createShareDataIntent() {
-        String mailContent = "Bill amount: " + bill_amount_edittext.getText() + "\nTip percentage: " + tip_percent_edittext.getText() + "%"
-                + "\nNumber of people: " + no_of_ppl_edittext.getText() + "\nTip amount: " + tip_amount_textview.getText()
-                + "\nTotal amount: " + total_amount_textview.getText()
-                + "\nEach Person Pays: " + each_person_pay_textview.getText();
-
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        shareIntent.setType("text/plain");
-        //Log.d(LOG_TAG, "createShareMovieIntent() shareMovieTrailer: " + shareMovieTrailer);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, mailContent);
-        return shareIntent;
-    }
+//    private Intent createShareDataIntent() {
+//        String mailContent = "Bill amount: " + bill_amount_edittext.getText() + "\nTip percentage: " + tip_percent_edittext.getText() + "%"
+//                + "\nNumber of people: " + no_of_ppl_edittext.getText() + "\nTip amount: " + tip_amount_textview.getText()
+//                + "\nTotal amount: " + total_amount_textview.getText()
+//                + "\nEach Person Pays: " + each_person_pay_textview.getText();
+//
+//        Log.d(LOG_TAG, "mailContent: " + mailContent);
+//
+//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//        shareIntent.setType("text/plain");
+//        shareIntent.putExtra(Intent.EXTRA_TEXT, mailContent);
+//        return shareIntent;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+//            case R.id.action_settings: {
+//                Intent settings = new Intent(this, SettingsActivity.class);
+//                startActivity(settings);
+//                return true;
+//            }
             case R.id.action_about: {
                 Intent about_page = new Intent(this, AboutActivity.class);
                 startActivity(about_page);
+                return true;
+            }
+            case R.id.action_share: {
+                String shareContent = "Bill amount: " + bill_amount_edittext.getText() + "\nTip percentage: " + tip_percent_edittext.getText() + "%"
+                        + "\nNumber of people: " + no_of_ppl_edittext.getText() + "\nTip amount: " + tip_amount_textview.getText()
+                        + "\nTotal amount: " + total_amount_textview.getText()
+                        + "\nEach Person Pays: " + each_person_pay_textview.getText();
+
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
+                try {
+                    startActivity(Intent.createChooser(shareIntent, getString(R.string.sendmail_header)));
+                } catch (android.content.ActivityNotFoundException e) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.no_mail_client_toast), Toast.LENGTH_SHORT).show();
+                }
                 return true;
             }
             default:

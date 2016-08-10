@@ -11,17 +11,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.hanks.htextview.HTextView;
+import com.hanks.htextview.HTextViewType;
+
 public class SplashScreen extends Activity {
 
-    private static final int SPLASH_SCREEN_TIME_OUT = 2000;
+    private static final int SPLASH_SCREEN_TIME_OUT = 3000;
+    private HTextView splashHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        splashHeader = (HTextView) findViewById(R.id.splash_header);
+        splashHeader.setTypeface(FontManager.getInstance(getAssets()).getFont("fonts/PoiretOne-Regular.ttf"));
+
+        splashHeader.setAnimateType(HTextViewType.LINE);
+        splashHeader.animateText(getString(R.string.app_name));
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         new Handler().postDelayed(new Runnable() {
             @Override
