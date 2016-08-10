@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,18 +26,18 @@ public class MainActivity extends AppCompatActivity {
     TextView tip_amount_textview;
     TextView total_amount_textview;
     TextView each_person_pay_textview;
+
     Button calculate_tip;
     FloatingActionButton fab;
 
     final String DEFAULT_VALUE1 = "0";
-
-    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.setCollapsible(true);
         toolbar.setTitle(getString(R.string.app_name));
@@ -53,36 +52,22 @@ public class MainActivity extends AppCompatActivity {
         no_of_ppl_edittext = (EditText) findViewById(R.id.no_of_ppl);
         each_person_pay_textview = (TextView) findViewById(R.id.each_person_pay);
         //fab = (FloatingActionButton) findViewById(R.id.sendmail_fab);
-
         calculate_tip = (Button) findViewById(R.id.calculate);
 
+        //Set default values
         tip_amount_textview.setText(DEFAULT_VALUE1);
         total_amount_textview.setText(DEFAULT_VALUE1);
         each_person_pay_textview.setText(DEFAULT_VALUE1);
 
-        //Phase2: Save calculation functionality
+        /**
+         * Version2: Save calculation functionality
+         */
 //        fab.setImageResource(R.mipmap.sendmail);
-        //fab.setVisibility(View.INVISIBLE);
-
+//        fab.setVisibility(View.INVISIBLE);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                String mailContent = "Bill amount: " + bill_amount_edittext.getText() + "\nTip percentage: " + tip_percent_edittext.getText() + "%"
-//                        + "\nNumber of people: " + no_of_ppl_edittext.getText() + "\nTip amount: " + tip_amount_textview.getText()
-//                        + "\nTotal amount: " + total_amount_textview.getText()
-//                        + "\nEach Person Pays: " + each_person_pay_textview.getText();
 //
-//                Log.d(LOG_TAG, "mailContent: " + mailContent);
-//
-//                Intent sendmail = new Intent(Intent.ACTION_SEND);
-//                //sendmail.setType("message/rfc822");
-//                sendmail.setType("text/plain");
-//                sendmail.putExtra(Intent.EXTRA_TEXT, mailContent);
-//                try {
-//                    startActivity(Intent.createChooser(sendmail, getString(R.string.sendmail_header)));
-//                } catch (android.content.ActivityNotFoundException e) {
-//                    Toast.makeText(getApplicationContext(), getString(R.string.no_mail_client_toast), Toast.LENGTH_SHORT).show();
-//                }
 //            }
 //        });
     }
@@ -93,38 +78,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate the menu; this adds items to the action bar/toolbar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        //getMenuInflater().inflate(R.menu.menu_share, menu);
-
-        //Provide default share action provider
-//        MenuItem shareMenuItem = menu.findItem(R.id.action_share);
-        //mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareMenuItem);
-//        mShareActionProvider = (ShareActionProvider) shareMenuItem.getActionProvider();
-//
-//        if (mShareActionProvider != null) {
-//            mShareActionProvider.setShareIntent(createShareDataIntent());
-//        }
-
         return true;
     }
-
-//    private Intent createShareDataIntent() {
-//        String mailContent = "Bill amount: " + bill_amount_edittext.getText() + "\nTip percentage: " + tip_percent_edittext.getText() + "%"
-//                + "\nNumber of people: " + no_of_ppl_edittext.getText() + "\nTip amount: " + tip_amount_textview.getText()
-//                + "\nTotal amount: " + total_amount_textview.getText()
-//                + "\nEach Person Pays: " + each_person_pay_textview.getText();
-//
-//        Log.d(LOG_TAG, "mailContent: " + mailContent);
-//
-//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//        shareIntent.setType("text/plain");
-//        shareIntent.putExtra(Intent.EXTRA_TEXT, mailContent);
-//        return shareIntent;
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            /**
+             * Version2: Add settings menu
+             */
 //            case R.id.action_settings: {
 //                Intent settings = new Intent(this, SettingsActivity.class);
 //                startActivity(settings);
@@ -133,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_about: {
                 Intent about_page = new Intent(this, AboutActivity.class);
                 startActivity(about_page);
+                return true;
+            }
+            case R.id.action_reset: {
+                bill_amount_edittext.setText("");
+                tip_percent_edittext.setText("");
+                no_of_ppl_edittext.setText("");
+                tip_amount_textview.setText("0");
+                total_amount_textview.setText("0");
+                each_person_pay_textview.setText("0");
                 return true;
             }
             case R.id.action_share: {
@@ -163,11 +134,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    /**
-     * Calculate total tip
-     *
-     * @param view
-     */
+    //Calculate Tip
     public void calculateTip(View view) {
         double billAmount = 0.0;
         double tipPercent = 0.0;

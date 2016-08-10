@@ -44,9 +44,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
         android:text="@string/app_copyright"
         android:textColor="@color/colorPrimary"
-        android:textSize="15sp"
-        android:gravity="center"/>
+        android:textSize="15sp" />
 
 </LinearLayout>

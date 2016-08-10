@@ -15,14 +15,14 @@ public class SettingsActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.prefs);
 
-        //Add toolbar
-        setToobar();
+        //Setup toolbar
+        setupToobar();
 
     }
 
     @TargetApi(21)
-    void setToobar() {
-        if(Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP){
+    void setupToobar() {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
             setActionBar(toolbar);
         }
