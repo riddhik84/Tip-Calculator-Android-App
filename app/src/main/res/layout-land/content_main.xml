@@ -7,10 +7,10 @@
     android:background="@android:color/white"
     android:orientation="vertical"
     android:paddingBottom="16dp"
-    android:paddingEnd="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingStart="16dp"
+    android:paddingEnd="46dp"
+    android:paddingLeft="46dp"
+    android:paddingRight="46dp"
+    android:paddingStart="46dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
@@ -54,7 +54,8 @@
                 <!-- Bill Amount -->
                 <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -70,7 +71,8 @@
                 <!-- Tip Percentage -->
                 <TableRow
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -84,7 +86,10 @@
                 </TableRow>
 
                 <!-- No. of people -->
-                <TableRow>
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -119,7 +124,9 @@
                 android:stretchColumns="2">
 
                 <!-- Tip amount -->
-                <TableRow android:layout_marginBottom="10dp">
+                <TableRow
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -131,7 +138,9 @@
                 </TableRow>
 
                 <!-- Total bill amount-->
-                <TableRow android:layout_marginBottom="10dp">
+                <TableRow
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -143,7 +152,9 @@
                 </TableRow>
 
                 <!-- Each person pays -->
-                <TableRow android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
