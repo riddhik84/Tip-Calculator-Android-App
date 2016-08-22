@@ -10,6 +10,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -27,6 +29,27 @@ dependencies {
 
     //Text Animations
     compile 'hanks.xyz:htextview-library:0.1.5'
+
+    //Junit, Espresso and Hamcrest tests
+    compile 'com.android.support:support-annotations:23.4.0'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile ('com.android.support.test:runner:0.5') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile ('com.android.support.test:rules:0.5') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile ('com.android.support.test.espresso:espresso-intents:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+
 }
 
 
