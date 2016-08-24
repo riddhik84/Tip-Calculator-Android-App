@@ -3,4 +3,23 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- General layout dimens-->
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="layout_margin_top">16dp</dimen>
+    <dimen name="layout_margin_bottom">16dp</dimen>
+    <dimen name="layout_margin_left">16dp</dimen>
+    <dimen name="layout_margin_right">16dp</dimen>
+    <dimen name="layout_margin_start">16dp</dimen>
+    <dimen name="layout_margin_end">16dp</dimen>
+
+    <!-- About Page -->
+    <dimen name="about_app_header_text_size">25sp</dimen>
+    <dimen name="about_app_version_textview_margin_bottom">15dp</dimen>
+    <dimen name="about_app_version_textview_text_size">18sp</dimen>
+    <dimen name="about_app_developer_textview_margin_bottom">15dp</dimen>
+    <dimen name="about_app_developer_textview_text_size">18sp</dimen>
+    <dimen name="about_app_copyright_textview_text_size">15sp</dimen>
+
 </resources>
+

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:layout_margin="@dimen/layout_margin"
     android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical"
@@ -16,28 +16,28 @@
         android:fontFamily="sans-serif-condensed"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
-        android:textSize="25sp"
+        android:textSize="@dimen/about_app_header_text_size"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/about_app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="@dimen/about_app_version_textview_margin_bottom"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/app_version"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:textSize="@dimen/about_app_version_textview_text_size" />
 
     <TextView
         android:id="@+id/about_app_developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="@dimen/about_app_developer_textview_margin_bottom"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/app_developer"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:textSize="@dimen/about_app_developer_textview_text_size" />
 
     <TextView
         android:id="@+id/about_app_copyright"
@@ -47,6 +47,6 @@
         android:gravity="center"
         android:text="@string/app_copyright"
         android:textColor="@color/colorPrimary"
-        android:textSize="15sp" />
+        android:textSize="@dimen/about_app_copyright_textview_text_size" />
 
 </LinearLayout>

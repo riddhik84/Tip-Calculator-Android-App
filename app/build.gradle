@@ -27,6 +27,9 @@ dependencies {
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
 
+    //For Admob support
+    compile 'com.google.android.gms:play-services:9.4.0'
+
     //Text Animations
     compile 'hanks.xyz:htextview-library:0.1.5'
 
