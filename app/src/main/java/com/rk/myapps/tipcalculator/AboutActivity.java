@@ -1,8 +1,7 @@
 package com.rk.myapps.tipcalculator;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 
 public class AboutActivity extends AppCompatActivity {
 
