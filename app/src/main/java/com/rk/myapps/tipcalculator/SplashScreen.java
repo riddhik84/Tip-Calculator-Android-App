@@ -29,6 +29,7 @@ public class SplashScreen extends Activity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //To show full screen
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
