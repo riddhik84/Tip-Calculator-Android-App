@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String DEFAULT_VALUE1 = "0";
 
+    AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = (AdView) findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
@@ -196,5 +198,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void showToast() {
         Toast.makeText(getApplicationContext(), getString(R.string.toast_message), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Resume the AdView.
+        mAdView.resume();
+    }
+
+    @Override
+    public void onPause() {
+        // Pause the AdView.
+        mAdView.pause();
+
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        // Destroy the AdView.
+        mAdView.destroy();
+
+        super.onDestroy();
     }
 }

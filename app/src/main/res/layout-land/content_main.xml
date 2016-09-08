@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingEnd="46dp"
-    android:paddingLeft="46dp"
-    android:paddingRight="46dp"
-    android:paddingStart="46dp"
+    android:paddingBottom="24dp"
+    android:paddingEnd="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingStart="24dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
@@ -53,7 +54,7 @@
 
                 <!-- Bill Amount -->
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
@@ -63,14 +64,14 @@
 
                     <EditText
                         android:id="@+id/bill_amount"
-                        style="@style/InputStyle"
+                        style="@style/inputStyle_land"
                         android:hint="0"
                         android:inputType="numberDecimal" />
                 </TableRow>
 
                 <!-- Tip Percentage -->
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
@@ -80,14 +81,14 @@
 
                     <EditText
                         android:id="@+id/tip_percent"
-                        style="@style/InputStyle"
+                        style="@style/inputStyle_land"
                         android:hint="0"
                         android:inputType="numberDecimal" />
                 </TableRow>
 
                 <!-- No. of people -->
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
@@ -97,7 +98,7 @@
 
                     <EditText
                         android:id="@+id/no_of_ppl"
-                        style="@style/InputStyle"
+                        style="@style/inputStyle_land"
                         android:hint="1"
                         android:inputType="number" />
                 </TableRow>
@@ -125,6 +126,8 @@
 
                 <!-- Tip amount -->
                 <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="center">
 
@@ -134,11 +137,13 @@
 
                     <TextView
                         android:id="@+id/tip_amount"
-                        style="@style/OutputStyle" />
+                        style="@style/outputStyle_land" />
                 </TableRow>
 
                 <!-- Total bill amount-->
                 <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="center">
 
@@ -148,11 +153,12 @@
 
                     <TextView
                         android:id="@+id/total_amount"
-                        style="@style/OutputStyle" />
+                        style="@style/outputStyle_land" />
                 </TableRow>
 
                 <!-- Each person pays -->
                 <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
@@ -162,7 +168,7 @@
 
                     <TextView
                         android:id="@+id/each_person_pay"
-                        style="@style/OutputStyle" />
+                        style="@style/outputStyle_land" />
                 </TableRow>
             </TableLayout>
 
@@ -173,6 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
             android:layout_marginTop="35dp"
@@ -187,6 +194,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|end"
                 android:visibility="gone"/> -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom"
+                ads:adSize="LARGE_BANNER"
+                ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
