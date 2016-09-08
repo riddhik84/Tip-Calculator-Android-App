@@ -20,7 +20,7 @@ public class SplashScreen extends Activity {
 
         // HTextView to show animated text
         splashHeader = (HTextView) findViewById(R.id.splash_header);
-        splashHeader.setTypeface(FontManager.getInstance(getAssets()).getFont("fonts/PoiretOne-Regular.ttf"));
+        splashHeader.setTypeface(FontManager.getInstance(getAssets()).getFont("fonts/poiretoneregular.ttf"));
 
         splashHeader.setAnimateType(HTextViewType.LINE);
         splashHeader.animateText(getString(R.string.app_name));

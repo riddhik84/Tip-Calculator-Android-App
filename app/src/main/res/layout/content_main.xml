@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
@@ -54,8 +54,9 @@
 
                 <!-- Bill Amount -->
                 <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -70,8 +71,9 @@
 
                 <!-- Tip Percentage -->
                 <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -85,7 +87,10 @@
                 </TableRow>
 
                 <!-- No. of people -->
-                <TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -120,7 +125,11 @@
                 android:stretchColumns="2">
 
                 <!-- Tip amount -->
-                <TableRow android:layout_marginBottom="10dp">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -132,7 +141,11 @@
                 </TableRow>
 
                 <!-- Total bill amount-->
-                <TableRow android:layout_marginBottom="10dp">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -144,7 +157,10 @@
                 </TableRow>
 
                 <!-- Each person pays -->
-                <TableRow android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         style="@style/LabelStyle"
@@ -163,6 +179,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
             android:layout_marginTop="35dp"
@@ -178,9 +195,16 @@
                 android:layout_gravity="right|end"
                 android:visibility="gone"/> -->
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="bottom"
@@ -189,4 +213,5 @@
 
     </LinearLayout>
 
-</ScrollView>
+
+</LinearLayout>
